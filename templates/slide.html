@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+                <div class="row padding-top">
+					<div class="col-md-12">
+	<h1 class="text-center">all slides </h1>
+	<a href="{{ url_for('addsldweb') }}" class="btn btn-success">add slide</a>
+    <table class="table table-dark">
+      <thead>
+        <tr class="bg-info text-center">
+          <th scope="col" width="10%">id</th>
+          <th scope="col" width="40%">image</th>
+          <th scope="col" width="30%">describtion</th>
+          <th scope="col" width="20%">control</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if allslide: %}
+            {% for slide in allslide %}
+                <tr class="bg-primary">
+                  <th scope="row">{{ loop.index }}</th>
+                  <td><img src="static/img/{{ slide.s_img }}" height="100px" width="85%"> </td>
+                  <td>{{ slide.s_text }}</td>
+                  <td>
+                      <a href="/edit/{{ slide.s_id }}" class="btn btn-success btn-xs">edit</a>
+                      <form action="/delete" method="post" style="display:inline-block;">
+                          <input type="hidden" name="table" value="slide">
+                          <input type="hidden" name="id" value="{{ slide.s_id }}">
+                          <input type="submit" class="btn btn-danger btn-xs" value="delete">
+                      </form>
+                  </td>
+                </tr>
+            {% endfor %}
+        {% else: %}
+            <tr class="bg-primary text-center">
+              <th scope="row"class="text-center" colspan="4">empty</th>
+            </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

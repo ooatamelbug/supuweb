@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+                <div class="row padding-top">
+					<div class="col-md-12">
+	<h1 class="text-center">all email </h1>
+    <a href="{{ url_for('sendemail') }}" class="btn btn-success">send new email</a>
+    <table class="table table-dark">
+      <thead>
+        <tr class="bg-info text-center">
+          <th scope="col" width="10%">id</th>
+          <th scope="col" width="20%">email</th>
+          <th scope="col" width="40%">message</th>
+          <th scope="col" width="10%">status</th>
+          <th scope="col" width="20%">control</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if allemail: %}
+            {% for email in allemail %}
+                <tr class="bg-primary">
+                  <th scope="row">{{ loop.index }}</th>
+                  <td>{{ email.e_email }}</td>
+                  <td>{{ email.e_msg }}</td>
+                    {% if email.e_stat == 1: %}
+                        <td><i class="fa fa-check"></i></td>
+                    {% else: %}
+                        <td><i class="fa fa-times"></i></td>
+                    {% endif %}
+                  <td>
+                      <a href="/edit/{{ email.e_id }}" class="btn btn-success btn-xs">edit</a>
+                      <form action="/delete" method="post" style="display:inline-block;">
+                          <input type="hidden" name="table" value="email">
+                          <input type="hidden" name="table" value="{{ email.e_id }}">
+                          <input type="submit" class="btn btn-danger btn-xs" value="delete">
+                      </form>
+                  </td>
+                </tr>
+            {% endfor %}
+        {% else: %}
+            <tr class="bg-primary text-center">
+              <th scope="row"class="text-center" colspan="5">empty</th>
+            </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

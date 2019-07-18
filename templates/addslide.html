@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% from '_formhelpers.html' import render_field %}
+{% block content %}
+	<h1> add news </h1>
+    <form class="form-group" autocomplete="off" enctype="multipart/form-data" action="{{ url_for('addsldweb') }}" method="post">
+        <div class="form-group">
+            <input type="file" class="form-control" required name="img" accept="image/*">
+        </div>
+        <div class="form-group">
+            {{ render_field(form.text, class='form-control')}}
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary form-control" value="add">
+        </div>
+    </form>
+{% endblock %}

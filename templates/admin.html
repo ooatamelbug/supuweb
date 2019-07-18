@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-4">
+			<ul class="breadcrumb">
+				<li><i class="fa fa-home"></i><a href="#"> Home</a></li>
+				<li class="active">Dashboard</li>
+			</ul>
+		</div>
+		<div class="col-md-8">
+
+			<ul class="list-inline pull-right mini-stat">
+				<!--<li>
+					<h5>LIKES <span class="stat-value color-blue"><i class="fa fa-plus-circle"></i> 81,450</span></h5>
+
+				</li>
+				<li>
+					<h5>SUBSCRIBERS <span class="stat-value color-green"><i class="fa fa-plus-circle"></i> 150,743</span></h5>
+
+				</li>-->
+				<li>
+					<h5>CUSTOMERS <span class="stat-value color-orang"><i class="fa fa-plus-circle"></i> 0 </span></h5>
+
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+	  <div class="col-md-12">
+		  <div class="main-header">
+			  <h2>DASHBOARD</h2>
+			  <em>the first priority information</em>
+		  </div>
+	  </div>
+	</div>
+
+	<div class="row padding-top">
+		<div class="col-md-12">
+			<div class="col-md-3 label-danger">
+				<div class="text-center" style="font-size:35px">
+					{{ cs }}
+				</div>
+				<div class="text-center"style="font-size:25px">
+					slides
+				</div>
+			</div>
+			<div class="col-md-3 label-success">
+				<div class="text-center"style="font-size:35px">
+					{{ cw }}
+				</div>
+				<div class="text-center"style="font-size:25px">
+					work
+				</div>
+			</div>
+			<div class="col-md-3 label-warning">
+				<div class="text-center"style="font-size:35px">
+					{{ cn }}
+				</div>
+				<div class="text-center"style="font-size:25px">
+					news
+				</div>
+			</div>
+			<div class="col-md-3 label-info">
+				<div class="text-center"style="font-size:35px">
+					{{ cu }}
+				</div>
+				<div class="text-center"style="font-size:25px">
+					users
+				</div>
+			</div>
+
+{% endblock %}

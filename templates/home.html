@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>SUPU</title>
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/components.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/responsee.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/icons.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static',filename='owl-carousel/owl.carousel.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static',filename='owl-carousel/owl.theme.css') }}">
+      <!-- CUSTOM STYLE -->
+      <link rel="stylesheet" href="{{ url_for('static',filename='css/template-style.css') }}">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+      <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-1.8.3.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-ui.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static',filename='js/template-scripts.js') }}"></script>
+      <style>
+         .alert-danger {
+             color: #e0141e;
+             background-color: #dff0d8;
+             padding : 10px;
+             border-color: #d6e9c6;
+           }
+         .alert-success {
+             color: #3c763d;
+             padding : 10px;
+             background-color: #dff0d8;
+             border-color: #d6e9c6;
+         }
+          .alert1{
+             position:fixed;
+             top:400px;
+             right:-254px;
+             z-index:10;
+             width:257.5px;
+             background:#92c500;
+             border-radius: 50%;
+             height: 50px;
+             opacity: 0.75;
+             animation : open1 3s ease-in-out .6s 1 forwards;
+         }
+         .alert1 img {
+             float:right;float: right;
+             position: absolute;
+             top: -0.516px;
+             right: 0;
+         }
+         .alert1 span {
+             padding: 11px 16px 10px;
+             margin-top: 20px;
+             position: absolute;
+             top: -17px;    color: #fff;
+         }
+         .alert1:hover {opacity:1}
+         @keyframes open1{
+            from {
+               right:-254px;
+            }
+            to {
+               right:-14px;
+            }
+         }
+      </style>
+   </head>
+   <body class="size-1140">
+  	  <!-- PREMIUM FEATURES BUTTON
+  	  <a target="" class="hide-s" href="" >
+         <img src="{{ url_for('static',filename='img/premium-features.png') }}" alt="">
+-->
+         <div class="alert1" style="">
+             <div class="">
+                <img src="{{ url_for('static',filename='img/premium-features.png') }}" style="" alt="">
+                <span style=""><strong> can i help you ?</strong></span>
+             </div>
+         </div>
+      <!--</a>
+      <!-- TOP NAV WITH LOGO -->
+      <header>
+         <div id="topbar">
+            <div class="line">
+               <div class="s-12 m-6 l-6">
+                  <p>CONTACT EG: <strong>{{ settings.tel }}</strong> | <strong>{{ settings.email }}</strong></p>
+               </div>
+               <div class="s-12 m-6 l-6">
+                  <div class="social right">
+                     <a href="{{ settings.face }}"><i class="icon-facebook_circle"></i></a><!-- <a><i class="icon-twitter_circle"></i></a> <a><i class="icon-google_plus_circle"></i></a> <a><i class="icon-instagram_circle"></i></a>-->
+                  </div>
+               </div>
+            </div>  
+         </div> 
+         <nav>
+            <div class="line">
+               <div class="s-12 l-2">
+                  <p class="logo"><strong>SUPU</strong>WEB</p>
+               </div>
+               <div class="top-nav s-12 l-10">
+                  <p class="nav-text">Custom menu text</p>
+                  <ul class="right">
+                     <li class="active-item"><a href="#carousel">Home</a></li>
+                     <li><a href="#features">Features</a></li>
+                     <li><a href="#about-us">About Us</a></li>
+                     <li><a href="#our-work">Our Work</a></li>
+                     <li><a href="#services">Services</a></li>
+                     <li><a href="#contact">Contact</a></li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+      </header>  
+      <section>
+         <!-- CAROUSEL --> 
+         <div id="carousel">
+            <div id="owl-demo" class="owl-carousel owl-theme"> 
+                {% for slide in slides %}
+                     <div class="item">
+                        <img class="imgid" src="static/img/{{ slide.s_img }}" alt="{{ slide.s_img }}">
+                        <div class="line">
+                           <div class="text hide-s">
+                              <div class="line">
+                                 <div class="prev-arrow hide-s hide-m">
+                                     <i class="icon-chevron_left"></i>
+                                 </div>
+                                 <div class="next-arrow hide-s hide-m">
+                                     <i class="icon-chevron_right"></i>
+                                 </div>
+                              </div>
+                              <h2>{{ slide.s_text }}</h2>
+                           </div>
+                        </div>
+                     </div>
+                {% endfor %}
+            </div>
+         </div>
+         <!-- FIRST BLOCK -->
+         <div id="first-block">
+            <div class="line">
+               <h1>SOHAG UNIVERSITY PROGRAMMING UNIT</h1>
+               <div class="s-12 m-4 l-2 center"><a class="white-btn" href="#contact">Contact Us</a></div>
+            </div>
+         </div>
+         <!-- FEATURES -->
+         <div id="features">
+            <div class="line">
+               <div class="margin">
+                  <div class="s-12 m-6 l-3 margin-bottom">
+                     <i class="icon-tablet icon3x"></i>
+                     <h2>Fully responsive</h2>
+                     <p>it can show it from more different advices .</p>
+                  </div>
+                  <div class="s-12 m-6 l-3 margin-bottom">
+                     <i class="icon-isight icon3x"></i>
+                     <h2>Clean design</h2>
+                     <p>Fantastic Clean Website Designs for Inspiration.</p>
+                  </div>
+                  <div class="s-12 m-6 l-3 margin-bottom">
+                     <i class="icon-star icon3x"></i>
+                     <h2>Valid code</h2>
+                     <p>valid to standard code on the programming different languages.</p>
+                  </div>
+                  <div class="s-12 m-6 l-3 margin-bottom">
+                     <i class="icon-heart icon3x"></i>
+                     <h2>High dynamic</h2>
+                     <p>a lot of programming languages we can write web or system with it for more effective and responds with custom.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- ABOUT US -->
+         <div id="about-us">
+            <div class="s-12 m-12 l-6 media-container">
+               <img src="{{ url_for('static',filename='img/logo.jpg') }}" style="width:80%;height:611px" alt="">
+            </div>
+            <article class="s-12 m-12 l-6">
+               <h2>We are<br> Web Designer & Developer<br></h2>
+               <p> we are special organization in government organization make a beautiful and responsive design and very dynamic website and make a several works inside our socitey .
+               </p>
+               <div class="about-us-icons">
+                  <i class="icon-paperplane_ico"></i> <i class="icon-trophy"></i> <i class="icon-clock"></i>
+               </div>
+            </article>
+         </div>
+         <!-- OUR WORK -->
+         <div id="our-work">
+            <div class="line">
+               <h2 class="section-title">Our Work</h2>
+               <div class="tabs">
+                  <div class="tab-item tab-active">
+                    <a class="tab-label active-btn">Web Design & Development</a>
+                    <div class="tab-content">
+                      <div class="margin">
+                          {% for work in works %}
+                                <div class="s-12 m-6 l-3"><a href="{{ work.w_link }}" class="our-work-container lightbox margin-bottom" style="height: 264px;"><div class="our-work-text"><h4>{{ work.w_name }}</h4><!--<p>{{ work.w_img }}</p>--></div><img src="static/img/{{ work.w_img }}" style="height:100%" alt="{{ work.w_img }}"></a></div>
+                          {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="tab-item">
+                    <a class="tab-label">Development</a>
+                    <div class="tab-content">
+                      <div class="margin">
+                        <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom"><div class="our-work-text"><h4>Lorem Ipsum Dolor</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div><img src="{{ url_for('static',filename='img/por7.jpg') }}" alt=""></a></div>
+                        <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom"><div class="our-work-text"><h4>Lorem Ipsum Dolor</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div><img src="{{ url_for('static',filename='img/por5.jpg') }}" alt=""></a></div>
+                        <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom"><div class="our-work-text"><h4>Lorem Ipsum Dolor</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div><img src="{{ url_for('static',filename='img/por1.jpg') }}" alt=""></a></div>
+                        <div class="s-12 m-6 l-3"><a class="our-work-container lightbox margin-bottom"><div class="our-work-text"><h4>Lorem Ipsum Dolor</h4><p>Laoreet dolore magna aliquam erat volutpat.</p></div><img src="{{ url_for('static',filename='img/por2.jpg') }}" alt=""></a></div>
+                      </div>
+                    </div>
+                  </div>-->
+               </div>
+            </div>
+         </div>
+         <!-- SERVICES -->
+         <div id="services">
+            <div class="line">
+               <h2 class="section-title">What we do</h2>
+               <div class="margin">
+                  <div class="s-12 m-6 l-4 margin-bottom">
+                     <i class="icon-vector"></i>
+                     <div class="service-text">
+                        <h3>We create</h3>
+                        <p>we can create a system and web application  to you in short time and high quality and high performance .</p>
+                     </div>
+                  </div>
+                  <div class="s-12 m-6 l-4 margin-bottom">
+                     <i class="icon-eye"></i>
+                     <div class="service-text">
+                        <h3>We look to the future</h3>
+                        <p>we look to development our society and transfer it into digital world.</p>
+                     </div>
+                  </div>
+                  <div class="s-12 m-12 l-4 margin-bottom">
+                     <i class="icon-star"></i>
+                     <div class="service-text">
+                        <h3>We Trusted destination</h3>
+                        <p>we are in government place we provide to you documents,and We also provide you with a follow-up period for free work in case of any failure .</p>
+                     </div>
+                  </div>
+                  <div class="s-12 m-12 l-4 margin-bottom">
+                     <i class="icon-random"></i>
+                     <div class="service-text">
+                        <h3>We find a solution</h3>
+                        <p>we try to find the best way to solution your problem and easy to use it .</p>
+                     </div>
+                  </div>
+                  <div class="s-12 m-12 l-4 margin-bottom">
+                     <i class="icon-globe"></i>
+                     <div class="service-text">
+                        <h3>We launched </h3>
+                        <p>we can launched your website on our hosting server very saved bouquets.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- LATEST NEWS -->
+         <div id="latest-news">
+            <div class="line">
+              <h2 class="section-title">Latest News</h2> 
+              <div class="margin">
+                  {% for new in news %}
+                        <div class="s-12 m-6 l-6">
+                          <div class="s-12 l-2">
+                            <div class="news-date">
+                              <p class="day">{{ new.n_date.strftime('%d') }}</p><p class="month">{{ new.n_date.strftime('%B') }}</p><p class="year">{{ new.n_date.strftime('%Y') }}</p>
+                            </div>
+                          </div>
+                          <div class="s-12 l-10">
+                            <div class="news-text">
+                              <h4>{{ new.n_title }}</h4>
+                              <p>{{ new.n_body }}</p>
+                            </div>
+                          </div>
+                        </div>
+                  {% endfor %}
+              </div>
+            </div>
+         </div> 
+         <!-- CONTACT -->
+         <div id="contact">
+            <div class="line">
+               <h2 class="section-title">Contact Us</h2>
+               <div class="margin">
+                  <div class="s-12 m-12 l-3 hide-m hide-s margin-bottom right-align">
+                    <img src="{{ url_for('static',filename='img/contact.jpg') }}" alt="">
+                  </div>
+                  <div class="s-12 m-12 l-4 margin-bottom right-align">
+                     <h3>supu campany info</h3>
+                     <address>
+                        <p><strong>Adress:</strong> {{ settings.adr }}</p>
+                        <p><strong>Country:</strong> {{ settings.cnt }}</p>
+                        <p><strong>E-mail:</strong> {{ settings.email }}</p>
+                     </address>
+                     <br />
+                     <h3>Social</h3>
+                     <p><i class="icon-facebook icon"></i> <a href="{{ settings.face }}">SOHAG UNIT PROGRAMMING UNIT</a></p>
+                  </div>
+                  <div class="s-12 m-12 l-5">
+                    <h3>contact as</h3>
+                    <form id="form" method="post" class="customform" autocomplete="off">
+                      <div class="s-12"><input name="email" placeholder="Your e-mail" title="Your e-mail" type="email" /></div>
+                      <div class="s-12"><input name="name" placeholder="Your name" title="Your name" type="text" /></div>
+                      <div class="s-12"><textarea placeholder="Your message" id="message" rows="5"></textarea></div>
+                      <div class="s-12 m-12 l-4"><button class="color-btn" type="submit">Send</button></div>
+                        <div class="alert alert-danger text-center" style="display: inline-block;margin-left: 20px;" id="msgr"></div>
+                        <div class="alert alert-success text-center"style="display: inline-block;margin-left: 20px;" id="msgs"></div>
+                    </form>
+                  </div>                
+               </div>
+            </div>
+         </div>
+         <!-- MAP -->
+         <div id="map-block">  	  
+            <iframe src="{{ chart }}" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+         </div>
+      </section>
+      <!-- FOOTER -->
+      <footer>
+         <div class="line">
+            <div class="s-12 l-6">
+               <p>Copyright 2018, SUPUWEB - GROUP</p>
+            </div>
+            <div class="s-12 l-6">
+               <a class="right" href="http://www.myresponsee.com" title="Responsee - lightweight responsive framework">Design and coding<br> by Supu Team</a>
+            </div>
+         </div>
+      </footer>
+      <script src="{{ url_for('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static',filename='js/responsee.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static',filename='owl-carousel/owl.carousel.js') }}"></script>
+      <script type="text/javascript">
+         jQuery(document).ready(function($) {
+
+
+             $(".imgid").height($(window).height())
+            /*$(window).resize(function(){
+               $(".imgid").height($(document).height())
+              })*/
+            var theme_slider = $("#owl-demo");
+            var owl = $('#owl-demo');
+            owl.owlCarousel({
+              nav: false,
+              dots: true,
+              items: 1,
+              loop: true,
+              autoplay: true,
+              autoplayTimeout: 6000
+            });
+            var owl = $('#owl-demo2');
+            owl.owlCarousel({
+              nav: true,
+              dots: false,
+              items: 1,
+              loop: true,
+              navText: ["&#xf007","&#xf006"],
+              autoplay: true,
+              autoplayTimeout: 4000
+            });
+        
+            // Custom Navigation Events
+            $(".next-arrow").click(function() {
+                theme_slider.trigger('next.owl');
+            })
+            $(".prev-arrow").click(function() {
+                theme_slider.trigger('prev.owl');
+            });
+
+            $("#form").on("submit", function(e){
+                  $.ajax({
+                     url : '/emailuser',
+                     type : 'POST',
+                     data : {
+                        email : $('input[name="email"]').val(),
+                        name  : $('input[name="name"]').val(),
+                        msg   : $('#message').val()
+                        },
+                     //cache: false
+                     })
+                     .done(function(data){
+                        if(data.danger){
+                           $("#msgr").text(data.danger).show();
+                           $("#msgs").hide();
+                        }else{
+                           $("#msgs").text(data.success).show();
+                           $("#msgr").hide();
+                        }
+                     });
+                   e.preventDefault();
+               });
+        }); 
+      </script>
+   </body>
+</html>

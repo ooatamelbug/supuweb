@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+                <div class="row padding-top">
+					<div class="col-md-12">
+	<h1 class="text-center">all news </h1>
+	<a href="{{ url_for('addnewweb') }}" class="btn btn-success">add new</a>
+    <table class="table table-dark">
+      <thead>
+        <tr class="bg-info text-center">
+          <th scope="col" width="10%">id</th>
+          <th scope="col" width="60%">title</th>
+          <th scope="col" width="10%">time</th>
+          <th scope="col" width="20%">control</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if allnews: %}
+            {% for new in allnews %}
+                <tr class="bg-primary">
+                  <th scope="row">{{ loop.index }}</th>
+                  <td>{{ new.n_title }}</td>
+                  <td>{{ new.n_date.strftime("%B %d") }}</td>
+                  <td>
+                      <a href="/edit/{{ new.n_id }}" class="btn btn-success btn-xs">edit</a>
+                      <form action="/delete" method="post" style="display:inline-block;">
+                          <input type="hidden" name="table" value="new">
+                          <input type="hidden" name="table" value="{{ new.n_id }}">
+                          <input type="submit" class="btn btn-danger btn-xs" value="delete">
+                      </form>
+                  </td>
+                </tr>
+            {% endfor %}
+        {% else: %}
+            <tr class="bg-primary text-center">
+              <th scope="row"class="text-center" colspan="4">empty</th>
+            </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

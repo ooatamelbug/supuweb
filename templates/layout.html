@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="sumit kumar">
+  <title>admin18</title><link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+  <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ url_for('static',filename='css/fontawesome-all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ url_for('static',filename='css/admin.css') }}" rel="stylesheet" type="text/css">
+ <script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
+ </head>
+
+<body>
+  <!--=============================
+                                             NAVIGATION
+                                   =============================-->
+  <!--top nav start=======-->
+  <nav class="navbar navbar-inverse top-bar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> <span class="menu-icon" id="menu-icon"><i class="fa fa-times" aria-hidden="true" id="chang-menu-icon"></i></span>
+        <a class="navbar-brand" href="#" style="padding-top: 17px;"><img src="" width="90%">SUPUWEB </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="#"><i class="fa fa-envelope"></i> <span class="badge">{{ emailc }}</span></a> </li>
+          <li class="">
+            <a href="#" class="user-profile"> <span class=""><img class="img-responsive" src="{{ url_for('static',filename='img/user.jpg') }}"></span> </a>
+          </li>
+          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ session.name }}
+           <span class="caret"></span></a>
+            <ul class="dropdown-menu list-group">
+              <li class="list-group-item list-group-item-primary"> <a href="/logout"><i class="fa fa-power-off"></i> Logout</a> </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--    top nav end===========-->
+  <div class="wrapper" id="wrapper">
+    <div class="left-container" id="left-container">
+      <!-- begin SIDE NAV USER PANEL -->
+      <div class="left-sidebar" id="show-nav">
+        <ul id="side" class="side-nav">
+          <li class="panel">
+            <a id="panel1" href="javascript:;" data-toggle="collapse" data-target="#Dashboard"> <i class="fa fa-dashboard"></i> Home
+              <i class="fa fa-chevron-left pull-right" id="arow1"></i> </a>
+            <ul class="collapse nav" id="Dashboard">
+              <li> <a href="/admin"><i class="fa fa-angle-double-right"></i>admin</a> </li>
+              <li> <a href="/" target="_blank"><i class="fa fa-angle-double-right"></i>site</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel2" href="javascript:;" data-toggle="collapse" data-target="#charts"> <i class="fa fa-newspaper-o"></i> News
+              <i class="fa fa-chevron-left pull-right" id="arow2"></i> </a>
+            <ul class="collapse nav" id="charts">
+              <li> <a href="/news"><i class="fa fa-angle-double-right"></i>news List</a> </li>
+              <li> <a href="/add_new"><i class="fa fa-angle-double-right"></i> add new</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel3" href="javascript:;" data-toggle="collapse" data-target="#calendar"> <i class="fa fa-calendar"></i> Slider
+              <span class="label label-danger">new event</span> <i class="fa fa-chevron-left pull-right" id="arow3"></i> </a>
+            <ul class="collapse nav" id="calendar">
+              <li> <a href="/slide"><i class="fa fa-angle-double-right"></i> slide list </a> </li>
+              <li> <a href="/add_slide"><i class="fa fa-angle-double-right"></i> add to slide</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel4" href="javascript:;" data-toggle="collapse" data-target="#clipboard"> <i class="fa fa-user"></i> user
+              <i class="fa fa fa-chevron-left pull-right" id="arow4"></i> </a>
+            <ul class="collapse nav" id="clipboard">
+              <li> <a href="/user"><i class="fa fa-angle-double-right"></i>users list</a> </li>
+              <li> <a href="/add_user"><i class="fa fa-angle-double-right"></i> add new user</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel6" href="javascript:;" data-toggle="collapse" data-target="#work"> <i class="fa fa-briefcase"></i> work
+              <span class="label label-primary">new msz</span> <i class="fa fa fa-chevron-left pull-right" id="arow6"></i> </a>
+            <ul class="collapse nav" id="work">
+              <li> <a href="/ourwork"><i class="fa fa-angle-double-right"></i> all work</a> </li>
+              <li> <a href="/addwork"><i class="fa fa-angle-double-right"></i> new work</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel6" href="javascript:;" data-toggle="collapse" data-target="#inbox"> <i class="fa fa-inbox"></i> inbox
+              <span class="label label-primary">{{ emailc }}</span> <i class="fa fa fa-chevron-left pull-right" id="arow6"></i> </a>
+            <ul class="collapse nav" id="inbox">
+              <li> <a href="/allemail"><i class="fa fa-angle-double-right"></i> all email</a> </li>
+              <li> <a href="/send"><i class="fa fa-angle-double-right"></i> send</a> </li>
+            </ul>
+          </li>
+          <li class="panel">
+            <a id="panel7" href="javascript:;" data-toggle="collapse" data-target="#cogs"> <i class="fa fa-cogs"></i> setting
+              <span class="label label-warning">Warning</span> <i class="fa fa fa-chevron-left pull-right" id="arow7"></i> </a>
+            <ul class="collapse nav" id="cogs">
+              <li> <a href="/setting"><i class="fa fa-angle-double-right"></i>all setting</a> </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- END SIDE NAV USER PANEL -->
+    </div>
+    <div class="right-container" id="right-container">
+        <div class="container-fluid">
+			{% include '_message.html' %}
+            {% block content %}{% endblock %}
+						
+                </div>
+                </div>
+          <div id="emailshow" class="showemail" style="position:fixed; top:70%;">
+
+          </div>
+        </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+   
+  <script type="text/javascript">
+    $(document).ready(function() {
+      emailreal();
+
+     $('.alert').fadeIn();
+
+    setTimeout(function(){
+      $('.alert').fadeOut()
+     }, 7000);
+
+      function emailreal(){
+        $.ajax({
+          url : '/remail',
+          type : 'POST',
+          data : {action:'email'},
+          success:function(data){
+            if(data.emailr){
+              console.log(data.emailr);
+            }
+          }
+        })
+      };
+
+      $("#panel1").click(function() {
+        $("#arow1").toggleClass("fa-chevron-left");
+        $("#arow1").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel2").click(function() {
+        $("#arow2").toggleClass("fa-chevron-left");
+        $("#arow2").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel3").click(function() {
+        $("#arow3").toggleClass("fa-chevron-left");
+        $("#arow3").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel4").click(function() {
+        $("#arow4").toggleClass("fa-chevron-left");
+          $("#arow4").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel5").click(function() {
+        $("#arow5").toggleClass("fa-chevron-left");
+        $("#arow5").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel6").click(function() {
+        $("#arow6").toggleClass("fa-chevron-left");
+        $("#arow6").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel7").click(function() {
+        $("#arow7").toggleClass("fa-chevron-left");
+        $("#arow7").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel8").click(function() {
+        $("#arow8").toggleClass("fa-chevron-left");
+        $("#arow8").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel9").click(function() {
+        $("#arow9").toggleClass("fa-chevron-left");
+        $("#arow9").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel10").click(function() {
+        $("#arow10").toggleClass("fa-chevron-left");
+        $("#arow10").toggleClass("fa-chevron-down");
+      });
+        
+      $("#panel11").click(function() {
+        $("#arow11").toggleClass("fa-chevron-left");
+        $("#arow11").toggleClass("fa-chevron-down");
+      });
+        
+      $("#menu-icon").click(function() {
+        $("#chang-menu-icon").toggleClass("fa-bars");
+        $("#chang-menu-icon").toggleClass("fa-times");
+        $("#show-nav").toggleClass("hide-sidebar");
+        $("#show-nav").toggleClass("left-sidebar");
+          
+        $("#left-container").toggleClass("less-width");
+        $("#right-container").toggleClass("full-width");
+      });
+        
+     
+        
+    });
+  </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+
+</html>

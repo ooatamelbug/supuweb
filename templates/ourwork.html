@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<h1 class="text-center">all work </h1>
+    <a href="{{ url_for('addwkweb') }}" class="btn btn-success">add new work</a>
+    <div class="">
+        {% if allwork: %}
+            {% for work in allwork %}
+                <div class="col-md-4 card text-center" style="border:1px solid #ccc;">
+                  <img class="card-img-top" src="/static/img/{{ work.w_img }}" width="100%" height="200px" alt="{{ work.w_img }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ work.w_name }}</h5>
+                    <p class="card-text"><a href="{{ work.w_link }}">to work</a></p><hr style="border-top:4px solid #EE5">
+                    <a href="/edit/{{ work.w_id }}" class="btn btn-success">edit</a>
+                    <form action="/delete" method="post" style="display:inline-block;">
+                      <input type="hidden" name="table" value="work">
+                      <input type="hidden" name="id" value="{{ work.w_id }}">
+                      <input type="submit" class="btn btn-danger" value="delete">
+                    </form>
+                      <br/>
+                      <br/>
+                  </div>
+                </div>
+            {% endfor %}
+        {% else: %}
+            <div class="bg-primary text-center">
+              <h1 class="text-center">empty</h1>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

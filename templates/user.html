@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="row padding-top">
+        <div class="col-md-12">
+            <h1 class="text-center">all users <span class="badge" style='background:#337ab7;font-size:15px'>{{ count }}</span></h1>
+            <a href="{{ url_for('adduser') }}" class="btn btn-success">add user</a>
+            <table class="table table-dark">
+              <thead>
+                <tr class="bg-info text-center">
+                  <th scope="col" width="10%">id</th>
+                  <th scope="col" width="40%">name</th>
+                  <th scope="col" width="25%">time</th>
+                  <th scope="col" width="25%">control</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if alluser: %}
+                    {% for user in alluser %}
+                        <tr class="bg-primary">
+                          <th scope="row">{{ loop.index }}</th>
+                          <td>{{ user.u_name }}</td>
+                          <td>{{ user.u_date }}</td>
+                          <td>
+                              {% if session.uid == user.u_id: %}
+                                   <a href="/edit/{{ user.u_id }}" class="btn btn-success btn-xs">edit</a>
+                              {% endif %}
+                              {% if session.ug == 1: %}
+                                  <form action="/delete" method="post" style="display:inline-block;">
+                                      <input type="hidden" name="table" value="user">
+                                      <input type="hidden" name="table" value="{{ user.u_id }}">
+                                      <input type="submit" class="btn btn-danger btn-xs" value="delete">
+                                  </form>
+                              {% endif %}
+                          </td>
+                        </tr>
+                    {% endfor %}
+                {% else: %}
+                    <tr class="bg-primary text-center">
+                      <th scope="row"class="text-center" colspan="4">empty</th>
+                    </tr>
+                {% endif %}
+              </tbody>
+            </table>
+{% endblock %}
